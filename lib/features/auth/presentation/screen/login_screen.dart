@@ -1,29 +1,28 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
-import 'package:blog_app/features/auth/presentation/screen/login_screen.dart';
+import 'package:blog_app/features/auth/presentation/screen/signup_screen.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class SignUpScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   static route() =>
-      MaterialPageRoute(builder: (context) => const SignUpScreen());
-  const SignUpScreen({super.key});
+      MaterialPageRoute(builder: (context) => const LoginScreen());
+  const LoginScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
     super.dispose();
   }
 
@@ -36,14 +35,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           key: formKey,
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text(
-              'Sign Up.',
+              'Sign In.',
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 30),
-            AuthField(
-              hintText: 'Name',
-              controller: nameController,
-            ),
             const SizedBox(height: 15),
             AuthField(
               hintText: 'Email',
@@ -56,21 +51,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
               isObscureText: true,
             ),
             const SizedBox(height: 15),
-            const AuthGradientButton(
-              btnText: 'Sign Up',
-            ),
+            const AuthGradientButton(btnText: 'Sign In'),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.push(context, LoginScreen.route());
+                Navigator.push(context, SignUpScreen.route());
               },
               child: RichText(
                 text: TextSpan(
-                    text: "Already have an account? ",
+                    text: "Don't have an account? ",
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: 'Sign In',
+                        text: 'Sign Up',
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium
