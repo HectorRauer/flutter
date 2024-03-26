@@ -3,7 +3,6 @@ import 'package:blog_app/features/auth/presentation/screen/signup_screen.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   static route() =>
