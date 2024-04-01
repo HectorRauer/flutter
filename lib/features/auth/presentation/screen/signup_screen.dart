@@ -1,8 +1,10 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
+import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/screen/login_screen.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
   static route() =>
@@ -57,8 +59,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
               isObscureText: true,
             ),
             const SizedBox(height: 15),
-            const AuthGradientButton(
+            AuthGradientButton(
               btnText: 'Sign Up',
+              onClick: () {
+                if (formKey.currentState!.validate()) {
+                  context.read<AuthBloc>().add(
+                        AuthSignUp(
+                          email: emailController.text.trim(),
+                          name: nameController.text.trim(),
+                          password: passwordController.text.trim(),
+                        ),
+                      );
+                }
+              },
             ),
             const SizedBox(height: 20),
             GestureDetector(

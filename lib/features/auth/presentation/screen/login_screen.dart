@@ -50,7 +50,10 @@ class _LoginScreenState extends State<LoginScreen> {
               isObscureText: true,
             ),
             const SizedBox(height: 15),
-            const AuthGradientButton(btnText: 'Sign In'),
+            AuthGradientButton(
+              btnText: 'Sign In',
+              onClick: () {},
+            ),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
